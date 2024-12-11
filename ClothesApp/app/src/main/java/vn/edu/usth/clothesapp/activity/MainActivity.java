@@ -106,24 +106,12 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
 
-
-//        WebView webView = findViewById(R.id.webView);
-//        WebSettings webSettings = webView.getSettings();
-//        webSettings.setJavaScriptEnabled(true);
-//        webSettings.setDomStorageEnabled(true);
-//        webSettings.setAllowFileAccessFromFileURLs(true);
-//        webSettings.setAllowUniversalAccessFromFileURLs(true);
-//
-//        // Load local HTML file from assets
-//        webView.setWebViewClient(new WebViewClient());
-//        webView.loadUrl("file:///android_asset/test.html");
-
-
         viewPager2 = findViewById(R.id.view_pager);
         bottomNavigationView = findViewById(R.id.bottom_nav);
 
         toolbar = findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         PagerAdapter adapter = new PagerAdapter(this);
         viewPager2.setAdapter(adapter);
@@ -175,7 +163,13 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, SettingActivity.class);
             startActivity(intent);
             return true;
+        } else if (itemId == R.id.home_button) {
+            Intent intent = new Intent(this, MainActivity.class);
+
+            startActivity(intent);
+            return true;
         }
-        return super.onOptionsItemSelected(item);
+            return super.onOptionsItemSelected(item);
+
     }
 }

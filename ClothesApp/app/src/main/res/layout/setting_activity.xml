@@ -1,5 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/Screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
@@ -8,18 +7,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:background="@drawable/border"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/title_text"
-            android:layout_width="150dp"
+            android:layout_width="200dp"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
-            android:fontFamily="@font/good_font"
             android:text="Setting"
+            android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -51,8 +49,6 @@
                 android:id="@+id/language_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_border"
-                android:fontFamily="@font/good_font"
                 android:text="Language"
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -71,8 +67,6 @@
                 android:id="@+id/theme_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_border"
-                android:fontFamily="@font/good_font"
                 android:text="Theme"
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -82,7 +76,8 @@
             <FrameLayout
                 android:id="@+id/fragment_container"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+              />
 
         </LinearLayout>
 
@@ -96,8 +91,6 @@
                 android:id="@+id/profile_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_border"
-                android:fontFamily="@font/good_font"
                 android:text="Profile"
                 android:textAlignment="center"
                 android:textColor="@color/black"

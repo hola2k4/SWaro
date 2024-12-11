@@ -24,8 +24,9 @@ public class PagerAdapter extends FragmentStateAdapter {
             case 2:
                 return new MyClosetFragment();
             default:
-                throw new IllegalArgumentException("Invalid position: " + position);
+                break;
         }
+        return null;
     }
 
 

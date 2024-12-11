@@ -5,10 +5,66 @@
     android:layout_height="match_parent"
     tools:context=".fragment.StylistFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <!-- Main Content -->
+    <ImageView
+        android:id="@+id/body_model"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/model3" />
 
+    <!-- Clothes Layer -->
+    <ImageView
+        android:id="@+id/upper_layer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:src="@drawable/model1" />
+
+    <!-- Accessories Layer -->
+    <ImageView
+        android:id="@+id/lower_layer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:src="@drawable/model4" />
+
+    <!-- Another Layer -->
+    <ImageView
+        android:id="@+id/full_layer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:src="@drawable/model2" />
+
+    <!-- Buttons -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Body" />
+
+        <Button
+            android:id="@+id/button_upper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upper" />
+
+        <Button
+            android:id="@+id/button_lower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lower" />
+
+        <Button
+            android:id="@+id/button_full"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Full" />
+    </LinearLayout>
 </FrameLayout>
