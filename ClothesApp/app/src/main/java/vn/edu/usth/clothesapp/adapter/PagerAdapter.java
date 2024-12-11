@@ -5,8 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import vn.edu.usth.clothesapp.fragment.UploadImageFragment;
-import vn.edu.usth.clothesapp.fragment.WardrobeFragment;
+import vn.edu.usth.clothesapp.fragment.ChatFragment;
+import vn.edu.usth.clothesapp.fragment.MyClosetFragment;
+import vn.edu.usth.clothesapp.fragment.StylistFragment;
 
 public class PagerAdapter extends FragmentStateAdapter {
     public PagerAdapter(@NonNull FragmentActivity fragmentActivity) {
@@ -16,15 +17,20 @@ public class PagerAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         switch (position) {
-            default:
-                return new WardrobeFragment();
             case 0:
-                return new UploadImageFragment();
+                return new StylistFragment();
+            case 1:
+                return new ChatFragment();
+            case 2:
+                return new MyClosetFragment();
+            default:
+                throw new IllegalArgumentException("Invalid position: " + position);
         }
     }
 
+
     @Override
     public int getItemCount() {
-        return 2;
+        return 3;
     }
 }

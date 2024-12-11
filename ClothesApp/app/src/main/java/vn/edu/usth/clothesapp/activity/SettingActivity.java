@@ -29,17 +29,16 @@ public class SettingActivity extends AppCompatActivity {
         languageButton = findViewById(R.id.language_button);
         themeButton = findViewById(R.id.theme_button);
         profileButton = findViewById(R.id.profile_button);
-        titleTextView = findViewById(R.id.title_text);  // Lấy TextView tiêu đề
+        titleTextView = findViewById(R.id.title_text);
         backButton = findViewById(R.id.close_setting_button);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Start MainActivity when the back button is clicked
                 Intent intent = new Intent(SettingActivity.this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
-                finish(); // Optional, finishes the SettingActivity
+                finish();
             }
         });
 

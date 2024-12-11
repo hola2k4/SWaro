@@ -18,4 +18,8 @@
     <color name="colorOnBackground">#000000</color>     <!-- Màu văn bản trên nền -->
     <color name="colorOnSurface">#000000</color>        <!-- Màu văn bản trên bề mặt -->
     <color name="colorOnError">#FFFFFF</color>          <!-- Màu văn bản trên màu lỗi -->
+
+    <color name="selected_color">#dc4e41</color> <!-- Màu khi chọn -->
+    <color name="unselected_color">#808080</color> <!-- Màu không chọn -->
+
 </resources>

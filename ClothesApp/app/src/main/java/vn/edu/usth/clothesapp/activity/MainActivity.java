@@ -32,7 +32,7 @@ import vn.edu.usth.clothesapp.R;
 import vn.edu.usth.clothesapp.adapter.PagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
-//    ViewPager2 viewPager2;
+    ViewPager2 viewPager2;
     BottomNavigationView bottomNavigationView;
     WebView webView;
     Toolbar toolbar;
@@ -107,24 +107,26 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        WebView webView = findViewById(R.id.webView);
-        WebSettings webSettings = webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        webSettings.setDomStorageEnabled(true);
-        webSettings.setAllowFileAccessFromFileURLs(true);
-        webSettings.setAllowUniversalAccessFromFileURLs(true);
+//        WebView webView = findViewById(R.id.webView);
+//        WebSettings webSettings = webView.getSettings();
+//        webSettings.setJavaScriptEnabled(true);
+//        webSettings.setDomStorageEnabled(true);
+//        webSettings.setAllowFileAccessFromFileURLs(true);
+//        webSettings.setAllowUniversalAccessFromFileURLs(true);
+//
+//        // Load local HTML file from assets
+//        webView.setWebViewClient(new WebViewClient());
+//        webView.loadUrl("file:///android_asset/test.html");
 
-        // Load local HTML file from assets
-        webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("file:///android_asset/test.html");
-        // viewPager2 = findViewById(R.id.view_pager);
+
+        viewPager2 = findViewById(R.id.view_pager);
         bottomNavigationView = findViewById(R.id.bottom_nav);
 
         toolbar = findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
         PagerAdapter adapter = new PagerAdapter(this);
-       /* viewPager2.setAdapter(adapter);
+        viewPager2.setAdapter(adapter);
         viewPager2.setOffscreenPageLimit(3);
 
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
@@ -133,26 +135,30 @@ public class MainActivity extends AppCompatActivity {
                 super.onPageSelected(position);
                 switch (position) {
                     case 0:
-                        bottomNavigationView.getMenu().findItem(R.id.wardrobe).setChecked(true);
+                        bottomNavigationView.getMenu().findItem(R.id.stylist).setChecked(true);
                     case 1:
-                        bottomNavigationView.getMenu().findItem(R.id.upload_image).setChecked(true);
+                        bottomNavigationView.getMenu().findItem(R.id.chat).setChecked(true);
+                    case 2:
+                        bottomNavigationView.getMenu().findItem(R.id.my_closet).setChecked(true);
                         break;
                 }
             }
         });
-*/
-        /*bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
-                if (itemId == R.id.wardrobe) {
+                if (itemId == R.id.stylist) {
                     viewPager2.setCurrentItem(0, true);
-                } else if (itemId == R.id.upload_image) {
+                } else if (itemId == R.id.chat) {
                     viewPager2.setCurrentItem(1, true);
+                } else if (itemId == R.id.my_closet) {
+                    viewPager2.setCurrentItem(2, true);
                 }
                 return true;
             }
-        });*/
+        });
     }
 
 
