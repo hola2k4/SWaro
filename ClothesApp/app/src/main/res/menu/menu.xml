@@ -1,3 +1,4 @@
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
@@ -7,9 +8,23 @@
         app:showAsAction="ifRoom"
          />
     <item
+
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+
         android:id="@+id/setting_button"
         android:icon="@drawable/baseline_settings_suggest_24"
         android:title="setting"
         app:showAsAction="ifRoom"
     />
+
 </menu>
+
+    <item
+        android:id="@+id/logout_button"
+        android:title="Logout"
+        app:showAsAction="ifRoom" />
+</menu>
+

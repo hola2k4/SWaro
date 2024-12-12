@@ -1,5 +1,6 @@
 package vn.edu.usth.clothesapp.model;
 
+
 import android.net.Uri;
 
 public class ClothingItem {
@@ -56,4 +57,17 @@ public class ClothingItem {
     public boolean hasImageRes() {
         return imageRes != 0;
     }
+
+public class ClothingItem {
+
+    private int imageRes;
+
+    public ClothingItem( int imageRes) {
+        this.imageRes = imageRes;
+    }
+
+    public int getImageRes() {
+        return imageRes;
+    }
+
 }

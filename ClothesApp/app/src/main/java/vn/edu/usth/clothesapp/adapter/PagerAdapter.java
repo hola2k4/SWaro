@@ -5,7 +5,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+
 import vn.edu.usth.clothesapp.fragment.ChatFragment;
+
+import vn.edu.usth.clothesapp.Chat.ChatFragment;
+
 import vn.edu.usth.clothesapp.fragment.MyClosetFragment;
 import vn.edu.usth.clothesapp.fragment.StylistFragment;
 
@@ -24,9 +28,14 @@ public class PagerAdapter extends FragmentStateAdapter {
             case 2:
                 return new MyClosetFragment();
             default:
+
                 break;
         }
         return null;
+
+                throw new IllegalArgumentException("Invalid position: " + position);
+        }
+
     }
 
 
