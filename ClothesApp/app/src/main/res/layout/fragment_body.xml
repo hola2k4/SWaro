@@ -1,0 +1,111 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    style="@style/Screen">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/border">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/good_font"
+            android:text="Body Infromation"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/close_body_button"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="70dp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/baseline_close_24"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="80dp"
+        android:padding="20dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="50dp">
+
+            <EditText
+                android:id="@+id/height_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Height (cm)"
+                android:inputType="numberDecimal"
+                android:background="@drawable/button_border"/>
+
+            <EditText
+                android:id="@+id/weight_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Weight (kg)"
+                android:inputType="numberDecimal"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_border"/>
+
+            <EditText
+                android:id="@+id/chest_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Chest (cm)"
+                android:inputType="numberDecimal"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_border"/>
+
+            <EditText
+                android:id="@+id/waist_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Waist (cm)"
+                android:inputType="numberDecimal"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_border"/>
+
+            <EditText
+                android:id="@+id/hip_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Hip (cm)"
+                android:inputType="numberDecimal"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_border"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/body_submit_button"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:backgroundTint="@color/black"
+                android:textColor="@color/white"
+                android:fontFamily="@font/good_font"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                android:background="@drawable/button_border"
+                android:layout_marginTop="20dp"
+                android:text="Submit" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
