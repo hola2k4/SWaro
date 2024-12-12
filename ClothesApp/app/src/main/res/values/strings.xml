@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">ClothesApp</string>
+
+    <string-array name="language_array">
+        <item>English</item>
+        <item>Tiếng Việt</item>
+        <item>Français</item>
+        <item>Deutsch</item>
+        <item>Español</item>
+        <item>日本語</item>
+        <item>中文</item>
+        <item>한국어</item>
+        <item>Italiano</item>
+        <item>Português</item>
+        <item>Русский</item>
+        <item>عربى</item>
+        <item>Türkçe</item>
+        <item>Polski</item>
+        <item>ไทย</item>
+        <item>Swedish</item>
+        <item>Danish</item>
+        <item>Norsk</item>
+        <item>Finnish</item>
+        <item>Hrvatski</item>
+        <item>Slovenský</item>
+        <item>Magyar</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
