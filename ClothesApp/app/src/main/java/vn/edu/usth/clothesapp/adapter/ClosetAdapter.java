@@ -11,11 +11,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import vn.edu.usth.clothesapp.R;
 import vn.edu.usth.clothesapp.fragment.UploadImageFragment;
 import vn.edu.usth.clothesapp.model.ClothingItem;
-
-import java.util.List;
 
 public class ClosetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -25,16 +26,17 @@ public class ClosetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private List<ClothingItem> clothingItems;
     private boolean showAddButton;
     private FragmentActivity fragmentActivity;
+    private String selectedCategory;  // Lưu thông tin danh mục (upperBody, lowerBody, footwear)
 
-    public ClosetAdapter(List<ClothingItem> clothingItems, boolean showAddButton, FragmentActivity fragmentActivity) {
-        this.clothingItems = clothingItems;
+    public ClosetAdapter(List<ClothingItem> clothingItems, boolean showAddButton, FragmentActivity fragmentActivity, String selectedCategory) {
+        this.clothingItems = clothingItems != null ? clothingItems : new ArrayList<>();  // Ensure non-null list
         this.showAddButton = showAddButton;
         this.fragmentActivity = fragmentActivity;
+        this.selectedCategory = selectedCategory;  // Lưu thông tin danh mục đã chọn
     }
 
     @Override
     public int getItemViewType(int position) {
-        // Kiểm tra nếu muốn hiển thị nút "Add New" ở cuối danh sách
         if (showAddButton && position == clothingItems.size()) {
             return ITEM_TYPE_ADD_NEW;  // Hiển thị item thêm mới (Add New Button)
         } else {
@@ -45,13 +47,11 @@ public class ClosetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == ITEM_TYPE_CLOTHING) {
-            // Nếu là item quần áo, tạo view cho item_holder.xml
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_holder, parent, false);
             return new ClothingViewHolder(view);
         } else if (viewType == ITEM_TYPE_ADD_NEW) {
-            // Nếu là item "Add New", tạo view cho upload_item.xml
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.upload_item, parent, false);
-            return new AddNewItemViewHolder(view);  // Trả về ViewHolder cho "Add New"
+            return new AddNewItemViewHolder(view);
         }
         return null; // Trả về null nếu không nhận diện được kiểu viewType
     }
@@ -77,15 +77,14 @@ public class ClosetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         public ClothingViewHolder(View itemView) {
             super(itemView);
-            clothingImage = itemView.findViewById(R.id.imgItem);  // Link tới ImageView trong item_holder.xml
+            clothingImage = itemView.findViewById(R.id.imgItem);
         }
 
         public void bind(ClothingItem clothingItem) {
-            // Kiểm tra và hiển thị ảnh từ URI hoặc từ tài nguyên
             if (clothingItem.hasImageUri()) {
-                clothingImage.setImageURI(clothingItem.getImageUri());  // Hiển thị ảnh từ URI (chụp ảnh)
+                clothingImage.setImageURI(clothingItem.getImageUri());
             } else if (clothingItem.hasImageRes()) {
-                clothingImage.setImageResource(clothingItem.getImageRes());  // Hiển thị ảnh từ tài nguyên (drawable)
+                clothingImage.setImageResource(clothingItem.getImageRes());
             }
         }
     }
@@ -95,28 +94,32 @@ public class ClosetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         public AddNewItemViewHolder(View itemView) {
             super(itemView);
             Button addNewItemButton = itemView.findViewById(R.id.upload_new_item_button);
-            addNewItemButton.setOnClickListener(v -> navigateToUploadImageFragment());  // Xử lý click vào nút "Add New"
+            addNewItemButton.setOnClickListener(v -> navigateToUploadImageFragment());
         }
 
         private void navigateToUploadImageFragment() {
             UploadImageFragment uploadImageFragment = new UploadImageFragment();
+            uploadImageFragment.setSelectedCategory(selectedCategory);  // Gửi danh mục vào fragment UploadImageFragment
             FragmentManager fragmentManager = fragmentActivity.getSupportFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-            fragmentActivity.findViewById(R.id.view_pager).setVisibility(View.GONE);  // Ẩn view pager nếu có
-
-            transaction.replace(R.id.fragment_container, uploadImageFragment);  // Thay đổi fragment
-            transaction.addToBackStack(null);  // Thêm vào backstack để có thể quay lại
-            transaction.commit();  // Thực thi giao dịch fragment
+            transaction.replace(R.id.fragment_container, uploadImageFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
         }
+    }
+
+    // Phương thức để cập nhật dữ liệu và notify
+    public void updateData(List<ClothingItem> newItems) {
+        this.clothingItems.clear();  // Xóa toàn bộ dữ liệu cũ
+        this.clothingItems.addAll(newItems);  // Thêm danh sách mới
+        notifyDataSetChanged();  // Thông báo RecyclerView để cập nhật UI
     }
 
     // Phương thức để thêm ảnh vào danh sách và cập nhật RecyclerView
     public void addNewImage(ClothingItem clothingItem) {
-        clothingItems.add(clothingItem); // Thêm item vào danh sách
-        notifyItemInserted(clothingItems.size() - 1); // Cập nhật RecyclerView
+        clothingItems.add(clothingItem);
+        int indexToInsert = clothingItems.size() - 1;  // Thêm vào vị trí cuối
+        notifyItemInserted(indexToInsert);  // Cập nhật RecyclerView
     }
-
 }
-
-
