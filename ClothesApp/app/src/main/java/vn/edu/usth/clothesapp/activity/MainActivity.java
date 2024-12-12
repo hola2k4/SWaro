@@ -3,24 +3,28 @@ package vn.edu.usth.clothesapp.activity;
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,8 +34,16 @@ import vn.edu.usth.clothesapp.db.ClothingItem;
 import vn.edu.usth.clothesapp.ApiService.ServiceApi;
 import vn.edu.usth.clothesapp.R;
 import vn.edu.usth.clothesapp.adapter.PagerAdapter;
+import vn.edu.usth.clothesapp.fragment.ChatFragment;
+import vn.edu.usth.clothesapp.fragment.MyClosetFragment;
+import vn.edu.usth.clothesapp.fragment.StylistFragment;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String KEY_IMAGE_URI = "image_uri";
+    private static final String KEY_SELECTED_TAB = "selected_tab";
+    private Uri imageUri;
+    private int selectedTab = R.id.stylist;
+
     ViewPager2 viewPager2;
     BottomNavigationView bottomNavigationView;
     WebView webView;
@@ -41,6 +53,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Retrieve the saved image URI and selected tab from SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        String savedImageUri = sharedPreferences.getString(KEY_IMAGE_URI, null);
+        if (savedImageUri != null) {
+            imageUri = Uri.parse(savedImageUri);
+        }
+        selectedTab = sharedPreferences.getInt(KEY_SELECTED_TAB, R.id.stylist);
 
         ServiceApi serviceApi = RetrofitClient.getClient().create(ServiceApi.class);
 
@@ -61,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         serviceApi = RetrofitClient.getClient().create(ServiceApi.class);
 
         String itemIdToDelete = "673f05a3aec8cafea591015d"; // Thay bằng ObjectId của item cần xóa
@@ -80,31 +99,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("MainActivity", "Error: " + t.getMessage());
             }
         });
-//        // Tạo một ClothingItem mới
-//        ClothingItem newItem = new ClothingItem(
-//                "c002", "u002", "Red T-Shirt", "Top", "Casual",
-//                "Red", "Cotton", "L", "Nike", "Summer", "Everyday",
-//                "http://example.com/clothing.jpg","dadadadasdad"
-//        );
-//
-//        // Gửi dữ liệu tới server
-//        Call<ClothingItem> call = serviceApi.addClothingItem(newItem);
-//        call.enqueue(new Callback<ClothingItem>() {
-//            @Override
-//            public void onResponse(Call<ClothingItem> call, Response<ClothingItem> response) {
-//                if (response.isSuccessful()) {
-//                    Log.d("MainActivity", "Thêm thành công: " + response.body());
-//                } else {
-//                    Log.e("MainActivity", "Lỗi: " + response.errorBody());
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ClothingItem> call, Throwable t) {
-//                Log.e("MainActivity", "Lỗi kết nối: " + t.getMessage());
-//            }
-//        });
-
 
         viewPager2 = findViewById(R.id.view_pager);
         bottomNavigationView = findViewById(R.id.bottom_nav);
@@ -124,8 +118,10 @@ public class MainActivity extends AppCompatActivity {
                 switch (position) {
                     case 0:
                         bottomNavigationView.getMenu().findItem(R.id.stylist).setChecked(true);
+                        break;
                     case 1:
                         bottomNavigationView.getMenu().findItem(R.id.chat).setChecked(true);
+                        break;
                     case 2:
                         bottomNavigationView.getMenu().findItem(R.id.my_closet).setChecked(true);
                         break;
@@ -133,22 +129,48 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int itemId = item.getItemId();
-                if (itemId == R.id.stylist) {
-                    viewPager2.setCurrentItem(0, true);
-                } else if (itemId == R.id.chat) {
-                    viewPager2.setCurrentItem(1, true);
-                } else if (itemId == R.id.my_closet) {
-                    viewPager2.setCurrentItem(2, true);
-                }
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            Map<Integer, Integer> menuItemToPositionMap = new HashMap<>();
+            menuItemToPositionMap.put(R.id.stylist, 0);
+            menuItemToPositionMap.put(R.id.chat, 1);
+            menuItemToPositionMap.put(R.id.my_closet, 2);
+
+            Integer position = menuItemToPositionMap.get(item.getItemId());
+            if (position != null) {
+                viewPager2.setCurrentItem(position, true);
+                selectedTab = item.getItemId();
                 return true;
             }
+            return false;
         });
+
+        // Set the selected tab
+        bottomNavigationView.setSelectedItemId(selectedTab);
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (imageUri != null) {
+            outState.putParcelable(KEY_IMAGE_URI, imageUri);
+        }
+
+        // Save the image URI and selected tab to SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(KEY_IMAGE_URI, imageUri != null ? imageUri.toString() : null);
+        editor.putInt(KEY_SELECTED_TAB, selectedTab);
+        editor.apply();
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState != null) {
+            imageUri = savedInstanceState.getParcelable(KEY_IMAGE_URI);
+            selectedTab = savedInstanceState.getInt(KEY_SELECTED_TAB, R.id.stylist);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -165,11 +187,9 @@ public class MainActivity extends AppCompatActivity {
             return true;
         } else if (itemId == R.id.home_button) {
             Intent intent = new Intent(this, MainActivity.class);
-
             startActivity(intent);
             return true;
         }
-            return super.onOptionsItemSelected(item);
-
+        return super.onOptionsItemSelected(item);
     }
 }

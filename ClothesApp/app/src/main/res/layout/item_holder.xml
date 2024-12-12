@@ -13,12 +13,11 @@
 
         <!-- Ảnh -->
         <ImageView
-            android:id="@+id/iv_clothing_image"
+            android:id="@+id/imgItem"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
             android:scaleType="centerCrop" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
-
-

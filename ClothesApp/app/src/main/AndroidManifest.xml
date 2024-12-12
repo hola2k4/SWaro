@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Quyền truy cập mạng (Internet) -->
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Quyền và tính năng liên quan đến camera -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
+    <!-- Quyền lưu trữ (sử dụng trong trường hợp bạn lưu ảnh trong bộ nhớ ngoài) -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <!-- Ứng dụng -->
     <application
         android:networkSecurityConfig="@xml/network_security_config"
         android:usesCleartextTraffic="true"
@@ -15,6 +27,7 @@
         android:theme="@style/Base.Theme.ClothesApp"
         tools:targetApi="31">
 
+        <!-- Main Activity (Giao diện chính) -->
         <activity
             android:name=".activity.MainActivity"
             android:exported="true">
@@ -23,7 +36,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Setting Activity -->
         <activity android:name=".activity.SettingActivity" />
+
+        <!-- FileProvider để chia sẻ tệp giữa ứng dụng và camera -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="vn.edu.usth.clothesapp.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
 
     </application>
 
