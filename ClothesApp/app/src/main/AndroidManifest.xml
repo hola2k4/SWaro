@@ -40,6 +40,7 @@
         <!-- Setting Activity -->
         <activity android:name=".activity.SettingActivity" />
 
+
         <!-- FileProvider để chia sẻ tệp giữa ứng dụng và camera -->
         <provider
             android:name="androidx.core.content.FileProvider"

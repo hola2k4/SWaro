@@ -17,7 +17,7 @@ import vn.edu.usth.clothesapp.R;
 import vn.edu.usth.clothesapp.fragment.ThemeFragment;
 
 public class SettingActivity extends AppCompatActivity {
-    Button languageButton, themeButton, profileButton;
+    ImageButton languageButton, themeButton, profileButton;
     ImageButton backButton;
     TextView titleTextView;
 

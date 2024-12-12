@@ -3,68 +3,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".fragment.StylistFragment">
 
-    <!-- Main Content -->
-    <ImageView
-        android:id="@+id/body_model"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/model3" />
+        android:orientation="horizontal">
 
-    <!-- Clothes Layer -->
-    <ImageView
-        android:id="@+id/upper_layer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:src="@drawable/model1" />
+        <ImageView
+            android:id="@+id/male_model"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/male" />
 
-    <!-- Accessories Layer -->
-    <ImageView
-        android:id="@+id/lower_layer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:src="@drawable/model4" />
+        <ImageView
+            android:id="@+id/female_model"
+            android:layout_width="196dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/female" />
 
-    <!-- Another Layer -->
-    <ImageView
-        android:id="@+id/full_layer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:src="@drawable/model2" />
+    </LinearLayout>
 
-    <!-- Buttons -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
+        android:padding="10dp"
         android:orientation="horizontal">
-
         <Button
-            android:id="@+id/button_body"
+            android:id="@+id/button_male"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Body" />
+            android:layout_margin="20dp"
+            app:cornerRadius="30dp"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:backgroundTint="@android:color/transparent"
+            android:text="Male model" />
 
         <Button
-            android:id="@+id/button_upper"
+            android:id="@+id/button_female"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Upper" />
+            android:layout_margin="20dp"
+            app:cornerRadius="30dp"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:backgroundTint="@android:color/transparent"
+            android:text="Female model" />
 
-        <Button
-            android:id="@+id/button_lower"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lower" />
-
-        <Button
-            android:id="@+id/button_full"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Full" />
     </LinearLayout>
 </FrameLayout>

@@ -11,9 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        app:logo="@drawable/resize_logo"
-        app:menu="@menu/menu" />
+        app:menu="@menu/menu" >
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="42dp"
+                android:src="@drawable/imagelogormbg"/>
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
