@@ -2,24 +2,29 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="colorPrimary">#6200EE</color>          <!-- Màu chính -->
-    <color name="colorPrimaryDark">#3700B3</color>      <!-- Màu chính tối -->
-    <color name="colorPrimaryVariant">#6200EE</color>   <!-- Biến thể màu chính -->
-    <color name="colorOnPrimary">#FFFFFF</color>        <!-- Màu văn bản trên màu chính -->
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorPrimaryVariant">#6200EE</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
 
-    <color name="colorSecondary">#03DAC5</color>        <!-- Màu phụ -->
-    <color name="colorSecondaryDark">#018786</color>    <!-- Màu phụ tối -->
-    <color name="colorSecondaryVariant">#03DAC5</color> <!-- Biến thể màu phụ -->
-    <color name="colorOnSecondary">#000000</color>      <!-- Màu văn bản trên màu phụ -->
+    <color name="colorSecondary">#03DAC5</color>
+    <color name="colorSecondaryDark">#018786</color>
+    <color name="colorSecondaryVariant">#03DAC5</color>
+    <color name="colorOnSecondary">#000000</color>
 
-    <color name="colorBackground">#FFFFFF</color>       <!-- Màu nền -->
-    <color name="colorSurface">#FFFFFF</color>          <!-- Màu bề mặt -->
-    <color name="colorError">#B00020</color>            <!-- Màu lỗi -->
-    <color name="colorOnBackground">#000000</color>     <!-- Màu văn bản trên nền -->
-    <color name="colorOnSurface">#000000</color>        <!-- Màu văn bản trên bề mặt -->
-    <color name="colorOnError">#FFFFFF</color>          <!-- Màu văn bản trên màu lỗi -->
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorError">#B00020</color>
+    <color name="colorOnBackground">#000000</color>
+    <color name="colorOnSurface">#000000</color>
+    <color name="colorOnError">#FFFFFF</color>
 
-    <color name="selected_color">#dc4e41</color> <!-- Màu khi chọn -->
-    <color name="unselected_color">#808080</color> <!-- Màu không chọn -->
+    <color name="selected_color">#dc4e41</color>
+    <color name="unselected_color">#808080</color>
+
+    <color name="background_app">#FF3366</color>
+    <color name="background_app_pastel">#ffe4e1</color>
+
+
 
 </resources>

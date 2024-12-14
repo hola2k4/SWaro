@@ -26,29 +26,12 @@ public class ProfileFragment extends Fragment {
         Log.d("ProfileFragment", "onCreateView: ProfileFragment is being created");
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-
-        Button loginButton = view.findViewById(R.id.login_button);
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navigateToFragment(new LoginFragment());
-            }
-        });
-
-        Button registerButton = view.findViewById(R.id.register_button);
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navigateToFragment(new RegisterFragment());
-            }
-        });
-
         return view;
     }
 
     private void navigateToFragment(Fragment fragment) {
         FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, fragment);
+        transaction.replace(R.id.setting_container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
     }

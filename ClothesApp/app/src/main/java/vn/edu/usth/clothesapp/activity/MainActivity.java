@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 
@@ -24,9 +26,11 @@ import vn.edu.usth.clothesapp.ApiService.RetrofitClient;
 import vn.edu.usth.clothesapp.db.ClothingItem;
 import vn.edu.usth.clothesapp.ApiService.ServiceApi;
 import vn.edu.usth.clothesapp.R;
+import vn.edu.usth.clothesapp.firebase.FirebaseService;
 import vn.edu.usth.clothesapp.fragment.ChatFragment;
 import vn.edu.usth.clothesapp.fragment.MyClosetFragment;
 import vn.edu.usth.clothesapp.fragment.StylistFragment;
+import vn.edu.usth.clothesapp.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
     private static final String KEY_IMAGE_URI = "image_uri";
@@ -37,6 +41,15 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     Toolbar toolbar;
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (FirebaseService.getInstance().getCurrentUser() == null) {
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         if (fragment != null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragment_container, fragment) // fragment_container là ID của FrameLayout trong activity_main.xml
+                    .replace(R.id.fragment_container, fragment)
                     .commit();
         }
     }
@@ -126,12 +139,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.setting_button) {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.setting_button) {
             Intent intent = new Intent(MainActivity.this, SettingActivity.class);
             startActivity(intent);
             return true;
         }
+        if (itemId == R.id.logout_button) {
+            logoutUser();
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
+    }
+
+    private void logoutUser() {
+        // Sign out from Firebase
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.signOut();
+
+        // Redirect the user to LoginActivity
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish(); // Close the MainActivity to prevent going back
+        Toast.makeText(MainActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
     }
 }

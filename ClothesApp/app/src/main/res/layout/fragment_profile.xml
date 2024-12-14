@@ -17,8 +17,6 @@
                     android:id="@+id/current_user_button"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="@drawable/button_border"
-                    android:fontFamily="@font/good_font"
                     android:textStyle="bold"
                     android:textSize="25dp"
                     android:textAlignment="textStart"
@@ -26,38 +24,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/login_button"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:background="@drawable/button_border"
-                android:backgroundTint="@color/black"
-                android:text="Login"
-                android:textColor="@color/white"
-                android:fontFamily="@font/good_font"
-                android:textStyle="bold"
-                android:textSize="25dp"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/register_button"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/button_border"
-                android:backgroundTint="@color/black"
-                android:text="Register"
-                android:textColor="@color/white"
-                android:fontFamily="@font/good_font"
-                android:textStyle="bold"
-                android:textSize="25dp" />
-
-        </LinearLayout>
 
     </LinearLayout>
 

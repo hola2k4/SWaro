@@ -123,7 +123,7 @@
         android:layout_marginTop="24dp"
         android:layout_gravity="end"
         android:layout_marginRight="10dp"
-        android:backgroundTint="@android:color/transparent"
+        android:backgroundTint="@color/white"
         android:text="Add"
         android:textColor="@color/black"
         app:cornerRadius="30dp"

@@ -20,24 +20,19 @@
             <ImageView
                 android:layout_width="48dp"
                 android:layout_height="42dp"
+                android:tint="@color/black"
                 android:src="@drawable/imagelogormbg"/>
 
         </RelativeLayout>
 
     </androidx.appcompat.widget.Toolbar>
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/tool_bar"
         android:layout_above="@id/bottom_nav" />
-
-<!--    <androidx.viewpager2.widget.ViewPager2-->
-<!--        android:id="@+id/view_pager"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_below="@id/tool_bar"-->
-<!--        android:layout_above="@id/bottom_nav" />-->
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
