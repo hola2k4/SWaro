@@ -20,6 +20,18 @@
             android:src="@drawable/female"
             android:visibility="visible" />
 
+        <Button
+            android:id="@+id/btnShareOutfit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chia sẻ"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="16dp"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/good_font"
+            android:textStyle="bold"
+            android:background="@drawable/border"/>
+
         <ImageView
             android:id="@+id/top_blazer"
             android:layout_width="match_parent"
