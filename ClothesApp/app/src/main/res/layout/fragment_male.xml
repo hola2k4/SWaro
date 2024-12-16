@@ -13,7 +13,7 @@
         android:layout_weight="2">
 
         <ImageView
-            android:id="@+id/model_female"
+            android:id="@+id/model_male"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -21,47 +21,110 @@
             android:visibility="visible" />
 
         <ImageView
-            android:id="@+id/top_blazer"
+            android:id="@+id/top_tanktop_male"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/top_blazer"
+            android:src="@drawable/top_tanktop_male"
             android:visibility="gone" />
 
         <ImageView
-            android:id="@+id/top_cardigan"
+            android:id="@+id/top_polo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/top_cardigan"
+            android:src="@drawable/top_polo"
             android:visibility="gone" />
         <ImageView
-            android:id="@+id/top_tanktop"
+            android:id="@+id/top_sweater"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/top_tanktop"
+            android:src="@drawable/top_sweater"
             android:visibility="gone" />
         <ImageView
-            android:id="@+id/top_sweater_turtleneck"
+            android:id="@+id/top_blazer_male"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/top_sweater_turtleneck"
+            android:src="@drawable/top_blazer_male"
             android:visibility="gone" />
         <ImageView
-            android:id="@+id/top_tshirt_mockneck"
+            android:id="@+id/top_breast"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/top_tshirt_mockneck"
+            android:src="@drawable/top_breast"
             android:visibility="gone" />
         <ImageView
-            android:id="@+id/bot_jean"
+            android:id="@+id/bot_jean_male"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/bot_jean"
+            android:src="@drawable/bot_jean_male"
+            android:visibility="gone" />
+        <ImageView
+            android:id="@+id/bot_pant"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bot_pant"
+            android:visibility="gone" />
+        <ImageView
+            android:id="@+id/tank_jean"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/tank_jean"
+            android:visibility="gone" />
+        <ImageView
+            android:id="@+id/tank_pant"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/tank_pant"
+            android:visibility="gone" />
+        <ImageView
+            android:id="@+id/polo_jean"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/polo_jean"
+            android:visibility="gone" />
+        <ImageView
+            android:id="@+id/polo_pant"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/polo_pant"
+            android:visibility="gone" />
+        <ImageView
+            android:id="@+id/sweater_jean_male"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/sweater_jean_male"
+            android:visibility="gone" />
+        <ImageView
+            android:id="@+id/sweater_pant"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/sweater_pant"
+            android:visibility="gone" />
+        <ImageView
+            android:id="@+id/male_blazer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/male_blazer"
+            android:visibility="gone" />
+        <ImageView
+            android:id="@+id/male_breast"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/male_breast"
             android:visibility="gone" />
 
     </FrameLayout>
@@ -90,12 +153,12 @@
                 app:cardElevation="4dp">
 
                 <ImageButton
-                    android:id="@+id/female_icon"
+                    android:id="@+id/male_model_icon"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
                     android:scaleType="centerInside"
-                    android:src="@drawable/male" />
+                    android:src="@drawable/male_model_icon" />
             </androidx.cardview.widget.CardView>
 
             <!-- Card 2 -->
@@ -109,12 +172,12 @@
                 app:cardElevation="4dp">
 
                 <ImageButton
-                    android:id="@+id/top_blazer_icon"
+                    android:id="@+id/top_tanktop_male_icon"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
                     android:scaleType="centerInside"
-                    android:src="@drawable/icon_blazer_male" />
+                    android:src="@drawable/top_tanktop_male_icon" />
             </androidx.cardview.widget.CardView>
 
             <!-- Card 3 -->
@@ -128,12 +191,12 @@
                 app:cardElevation="4dp">
 
                 <ImageButton
-                    android:id="@+id/top_cardigan_icon"
+                    android:id="@+id/top_polo_icon"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
                     android:scaleType="centerInside"
-                    android:src="@drawable/icon_cardigan_male" />
+                    android:src="@drawable/top_polo_icon" />
             </androidx.cardview.widget.CardView>
 
             <!-- Card 4 -->
@@ -147,12 +210,12 @@
                 app:cardElevation="4dp">
 
                 <ImageButton
-                    android:id="@+id/top_tanktop_icon"
+                    android:id="@+id/top_sweater_male_icon"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
                     android:scaleType="centerInside"
-                    android:src="@drawable/icon_tanktop_male" />
+                    android:src="@drawable/top_sweater_male_icon" />
             </androidx.cardview.widget.CardView>
 
             <!-- Card 5 -->
@@ -166,12 +229,12 @@
                 app:cardElevation="4dp">
 
                 <ImageButton
-                    android:id="@+id/top_sweater_icon"
+                    android:id="@+id/top_blazer_male_icon"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
                     android:scaleType="centerInside"
-                    android:src="@drawable/icon_sweater_turtleneck_male" />
+                    android:src="@drawable/top_blazer_male_icon" />
             </androidx.cardview.widget.CardView>
 
             <!-- Card 6 -->
@@ -185,12 +248,183 @@
                 app:cardElevation="4dp">
 
                 <ImageButton
-                    android:id="@+id/top_mockneck_icon"
+                    android:id="@+id/top_breast_icon"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
                     android:scaleType="centerInside"
-                    android:src="@drawable/icon_t_shirt_mockneck_male" />
+                    android:src="@drawable/top_breast_icon" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
+
+                <ImageButton
+                    android:id="@+id/bot_jean_male_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/bot_jean_male_icon" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
+
+                <ImageButton
+                    android:id="@+id/bot_pant_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/bot_pant_icon" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
+
+                <ImageButton
+                    android:id="@+id/tank_jean_male_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/tank_jean_male_icon" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
+
+                <ImageButton
+                    android:id="@+id/tank_pant_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/tank_pant_icon" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
+
+                <ImageButton
+                    android:id="@+id/polo_jean_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/polo_jean_icon" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
+
+                <ImageButton
+                    android:id="@+id/polo_pant_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/polo_pant_icon" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
+
+                <ImageButton
+                    android:id="@+id/sweater_jean_male_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/sweater_jean_male_icon" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
+
+                <ImageButton
+                    android:id="@+id/sweater_pant_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/sweater_pant_icon" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
+
+                <ImageButton
+                    android:id="@+id/male_blazer_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/male_blazer_icon" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
+
+                <ImageButton
+                    android:id="@+id/male_breast_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/male_breast_icon" />
             </androidx.cardview.widget.CardView>
 
 
