@@ -16,27 +16,33 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import vn.edu.usth.clothesapp.ApiService.RetrofitClient;
-import vn.edu.usth.clothesapp.db.ClothingItem;
-import vn.edu.usth.clothesapp.ApiService.ServiceApi;
+import vn.edu.usth.clothesapp.Chatbox.ChatActivity;
 import vn.edu.usth.clothesapp.R;
 import vn.edu.usth.clothesapp.firebase.FirebaseService;
 import vn.edu.usth.clothesapp.fragment.ChatFragment;
 import vn.edu.usth.clothesapp.fragment.MyClosetFragment;
 import vn.edu.usth.clothesapp.fragment.StylistFragment;
 import vn.edu.usth.clothesapp.login.LoginActivity;
+import vn.edu.usth.clothesapp.utilities.Constants;
+import vn.edu.usth.clothesapp.utilities.PreferenceManager;
 
 public class MainActivity extends AppCompatActivity {
     private static final String KEY_IMAGE_URI = "image_uri";
     private static final String KEY_SELECTED_TAB = "selected_tab";
     private Uri imageUri;
     private int selectedTab = R.id.stylist;
+    private PreferenceManager preferenceManager;
+
 
     BottomNavigationView bottomNavigationView;
     Toolbar toolbar;
@@ -44,43 +50,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (FirebaseService.getInstance().getCurrentUser() == null) {
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-        }
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Retrieve the saved image URI and selected tab from SharedPreferences
+        preferenceManager = new PreferenceManager(getApplicationContext());
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         String savedImageUri = sharedPreferences.getString(KEY_IMAGE_URI, null);
         if (savedImageUri != null) {
             imageUri = Uri.parse(savedImageUri);
         }
         selectedTab = sharedPreferences.getInt(KEY_SELECTED_TAB, R.id.stylist);
-
-        ServiceApi serviceApi = RetrofitClient.getClient().create(ServiceApi.class);
-
-        serviceApi.getClothingItems().enqueue(new Callback<List<ClothingItem>>() {
-            @Override
-            public void onResponse(Call<List<ClothingItem>> call, Response<List<ClothingItem>> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    List<ClothingItem> clothingItems = response.body();
-                    for (ClothingItem item : clothingItems) {
-                        Log.d("MainActivity", "Item Name: " + item.getItemName());
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<ClothingItem>> call, Throwable t) {
-                Log.e("MainActivity", "Error fetching data: " + t.getMessage());
-            }
-        });
 
         toolbar = findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
@@ -93,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
-        // Set the default tab
         switchFragment(selectedTab);
     }
 
@@ -141,6 +122,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
+        if (itemId == R.id.chatbox) {
+            Intent intent = new Intent(MainActivity.this, ChatActivity.class);
+            startActivity(intent);
+            return true;
+        }
         if (itemId == R.id.setting_button) {
             Intent intent = new Intent(MainActivity.this, SettingActivity.class);
             startActivity(intent);
@@ -155,14 +141,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void logoutUser() {
-        // Sign out from Firebase
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        firebaseAuth.signOut();
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        String userId = preferenceManager.getString(Constants.KEY_USER_ID);
 
-        // Redirect the user to LoginActivity
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(intent);
-        finish(); // Close the MainActivity to prevent going back
-        Toast.makeText(MainActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+        if (userId != null) {
+            DocumentReference documentReference = database.collection(Constants.KEY_COLLECTION_USERS).document(userId);
+
+            // Xóa token FCM của người dùng để ngăn nhận thông báo sau khi đăng xuất
+            HashMap<String, Object> updates = new HashMap<>();
+            updates.put(Constants.KEY_FCM_TOKEN, FieldValue.delete());
+
+            documentReference.update(updates)
+                    .addOnSuccessListener(unused -> {
+                        // Xóa dữ liệu trong PreferenceManager
+                        preferenceManager.clear();
+
+                        // Chuyển đến LoginActivity
+                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                        finish(); // Đóng MainActivity
+                        Toast.makeText(MainActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(MainActivity.this, "Failed to log out", Toast.LENGTH_SHORT).show();
+                    });
+        } else {
+            Toast.makeText(this, "No user found", Toast.LENGTH_SHORT).show();
+        }
     }
 }

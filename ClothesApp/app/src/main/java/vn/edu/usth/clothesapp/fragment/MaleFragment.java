@@ -69,7 +69,6 @@ public class MaleFragment extends Fragment {
         blazermale = view.findViewById(R.id.male_blazer);
         breastmale =view.findViewById(R.id.male_breast);
 
-        // Tham chiếu các nút
         buttonmodelMale = view.findViewById(R.id.male_model_icon);
 
         buttontopTanktop = view.findViewById(R.id.top_tanktop_male_icon);
@@ -93,8 +92,6 @@ public class MaleFragment extends Fragment {
         buttonblazermale = view.findViewById(R.id.male_blazer_icon);
         buttonbreastmale =view.findViewById(R.id.male_breast_icon);
 
-
-        // Xử lý sự kiện nút bấm
         buttonmodelMale.setOnClickListener(v -> showOutfit(modelMale));
         buttontopTanktop.setOnClickListener(v -> showOutfit(topTanktop));
         buttontopPolo.setOnClickListener(v -> showOutfit(topPolo));
@@ -121,7 +118,6 @@ public class MaleFragment extends Fragment {
     }
 
     private void showOutfit(ImageView selectedOutfit) {
-        // Đặt tất cả các ImageView về trạng thái "gone"
         modelMale.setVisibility(View.VISIBLE);
         topTanktop.setVisibility(View.GONE);
         topBreast.setVisibility(View.GONE);
@@ -142,16 +138,12 @@ public class MaleFragment extends Fragment {
         breastmale.setVisibility(View.GONE);
 
 
-        // Hiển thị ImageView được chọn
         selectedOutfit.setVisibility(View.VISIBLE);
-        //modelFemale.setVisibility(View.GONE);
     }
 
     private void shareCurrentOutfit(View container) {
-        // Chụp hình ảnh của view
         Bitmap bitmap = getBitmapFromView(container);
 
-        // Lưu ảnh vào file tạm
         try {
             File cachePath = new File(requireContext().getCacheDir(), "images");
             cachePath.mkdirs();
@@ -160,7 +152,6 @@ public class MaleFragment extends Fragment {
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
             stream.close();
 
-            // Chia sẻ file
             Uri imageUri = FileProvider.getUriForFile(requireContext(), requireContext().getPackageName() + ".fileprovider", imageFile);
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("image/*");

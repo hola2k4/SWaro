@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-import vn.edu.usth.clothesapp.model.ClothingItem;
+import vn.edu.usth.clothesapp.models.ClothingItem;
 
 public class ClosetViewModel extends ViewModel {
     private final MutableLiveData<List<ClothingItem>> upperBodyItems = new MutableLiveData<>(new ArrayList<>());

@@ -16,7 +16,7 @@ import java.util.List;
 
 import vn.edu.usth.clothesapp.R;
 import vn.edu.usth.clothesapp.fragment.UploadImageFragment;
-import vn.edu.usth.clothesapp.model.ClothingItem;
+import vn.edu.usth.clothesapp.models.ClothingItem;
 
 public class ClosetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 

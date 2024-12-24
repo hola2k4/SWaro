@@ -20,12 +20,39 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Create Account"
+            android:text="@string/create_account"
             android:textColor="@android:color/black"
             android:textSize="28sp"
             android:textStyle="bold"
             android:layout_marginBottom="32dp"
             android:gravity="center"/>
+
+        <FrameLayout
+            android:id="@+id/layoutImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/imageProfile"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/background_image"
+                android:scaleType="centerCrop"
+                android:layout_marginStart="100dp"
+                app:riv_oval="true"/>
+>
+
+            <TextView
+                android:id="@+id/textAddImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/add_image"
+                android:textColor="@color/secondary_text"
+                android:layout_marginStart="50dp"
+                android:textSize="10sp" />
+        </FrameLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -48,6 +75,7 @@
                 android:inputType="text"
                 android:background="@android:color/transparent"
                 android:paddingTop="16dp"
+                android:layout_marginTop="20dp"
                 android:paddingBottom="16dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -66,7 +94,7 @@
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
+                android:hint="@string/email"
                 android:textColor="@android:color/black"
                 android:textColorHint="#888888"
                 android:inputType="textEmailAddress"

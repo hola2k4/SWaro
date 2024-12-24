@@ -20,8 +20,8 @@
             <ImageView
                 android:layout_width="48dp"
                 android:layout_height="42dp"
-                android:tint="@color/black"
-                android:src="@drawable/imagelogormbg"/>
+                android:src="@drawable/imagelogormbg"
+                app:tint="@color/black" />
 
         </RelativeLayout>
 

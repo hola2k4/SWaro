@@ -11,11 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import vn.edu.usth.clothesapp.R;
 import vn.edu.usth.clothesapp.adapter.ClosetAdapter;
-import vn.edu.usth.clothesapp.model.ClothingItem;
+import vn.edu.usth.clothesapp.models.ClothingItem;
 import vn.edu.usth.clothesapp.view.ClosetViewModel;
 
 public class MyClosetFragment extends Fragment {

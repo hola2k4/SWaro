@@ -76,24 +76,34 @@
                 android:paddingBottom="16dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:layout_gravity="center"
-            android:indeterminateTint="@android:color/black"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/loginButton"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Login"
-            android:layout_marginTop="16dp"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:backgroundTint="@color/background_app"
-            app:cornerRadius="30dp"
-            android:textColor="@color/background_app_pastel"/>
+            android:layout_marginTop="20dp"
+            android:animateLayoutChanges="true">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:visibility="invisible">
+            </ProgressBar>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/loginButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:layout_marginTop="16dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:backgroundTint="@color/background_app"
+                app:cornerRadius="30dp"
+                android:textColor="@color/background_app_pastel"/>
+
+        </FrameLayout>
+
+
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/registerButton"

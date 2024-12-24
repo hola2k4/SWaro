@@ -23,7 +23,7 @@ import java.io.File;
 import java.io.IOException;
 
 import vn.edu.usth.clothesapp.R;
-import vn.edu.usth.clothesapp.model.ClothingItem;
+import vn.edu.usth.clothesapp.models.ClothingItem;
 import vn.edu.usth.clothesapp.view.ClosetViewModel;
 
 public class UploadImageFragment extends Fragment {
