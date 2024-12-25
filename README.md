@@ -1,2 +1,2 @@
-# SWaro
-Your own smart wardrobe
+# SmartWardrobe
+Group Project
